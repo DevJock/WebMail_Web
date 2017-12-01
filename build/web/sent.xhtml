@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Sent</title>
+    </h:head>
+    <h:body>
+        <center><h1><div style="font-size: 80px;">#{webMail.account.name}'s SentBox</div><div style="font-size: 100px;">&#x1F4E4;</div></h1></center>
+        <h:form style="min-height: 500px;margin: auto;width: 80%;border: 3px solid black;padding: 30px;">
+           <div style="float: left; padding: 30px;">
+               <h:commandButton style="background-color: #4CAF50; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none;
+                display: inline-block; font-size: 16px; padding: 10px;" id="compose" value="Compose New Mail" action="compose.xhtml" />
+               &nbsp;
+               <h:commandButton style="background-color: #008CBA; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none;
+                display: inline-block; font-size: 16px; padding: 10px;" id="inbox" value="Inbox" action="account.xhtml" />
+               &nbsp;
+                <h:commandButton style="background-color: #008CBA; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none;
+                    display: inline-block; font-size: 16px; padding: 10px;" id="trash" value="View Trash"
+                                    action="trash.xhtml" />
+           </div>
+           <div style="float: right;padding: 30px;">
+               <h:commandButton style="background-color: orange; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none;
+                display: inline-block; font-size: 16px; padding: 10px;" id="refresh" value="Refresh"
+                action="#{webMail.refresh()}" />
+               &nbsp;
+               <h:commandButton style="background-color: #f44336; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none;
+                display: inline-block; font-size: 16px; padding: 10px;" id="logout" value="Log Out"
+                action="#{webMail.signOut()}" />
+           </div>
+           <div style="display: inline-block; margin: 30px;">
+           <h:dataTable id="sentbox" 
+                        rows ="#{webMail.sentBox.size()}" 
+                         value="#{webMail.sentBox}" var="emailObj">   
+                <h:column>  
+                    <div style="font-size: 72px;float: left;">&#x1F4E7;</div>
+                    <div style="font-size: 32px;float:left; padding:25px;">
+                        <h:commandLink value="#{webMail.getNameForEmailID(emailObj.to)}, #{emailObj.subject}  #{emailObj.timeStamp}" action="#{webMail.getSentEmailByID(emailObj.ID)}"/>
+                    </div>
+                </h:column>
+            </h:dataTable>
+           </div>
+        </h:form>
+    </h:body>
+</html>
+

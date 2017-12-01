@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>WebMail</title>
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="refresh"/>
+        
+    </h:head>
+    <h:body>
+        <div>
+            <center><h1 style="font-size: 60px;">Welcome to WebMail <div style="font-size: 100px;">&#x1F4BB;</div> </h1></center>
+            <center><h1>Login</h1></center>
+            <h:form style="margin: auto;width: 60%;border: 3px solid green;padding: 10px;">
+                <center style="padding: 10px;">
+                    <p style="font-size: 22px;">
+                    Please enter your Username:<br/>
+                        <h:inputText style="width: 50%; height: 50px; font-size: 22px; text-align: center;" id="id" required ="true" 
+                                     requiredMessage="The ID field cannot be empty"
+                                     title="Please enter your ID"
+                                     value="#{webMail.account.userName}"
+                                     validatorMessage="The ID must be between 3 and 20 characters">
+                            <f:validateLength maximum="20" minimum="3" />
+                        </h:inputText>
+                </p>
+                <p style="font-size: 22px;">
+                Please enter your password:<br/>
+                    <h:inputText style="width: 50%; height: 50px; font-size: 22px; text-align: center;" id="psw" required ="true" 
+                                 requiredMessage="The password field cannot be empty"
+                                 title="Please enter your psw"
+                                 value="#{webMail.account.password}"
+                                 >
+                            <f:validateLength maximum="8" minimum="3" />
+                    </h:inputText>
+                </p>
+                <p>
+                    <h:commandButton style="background-color: green; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none;
+                display: inline-block; font-size: 16px; padding: 10px;" id="submit" value="Login"
+                                     action="#{webMail.Login()}" />
+                                     </p>
+                </center>
+            </h:form>
+            <center><h3>Don't Have an Account ?</h3>
+                <h:link outcome="register.xhtml">
+                    Register a New Account
+                </h:link> 
+            </center>
+        </div>
+    </h:body>
+</html>
+

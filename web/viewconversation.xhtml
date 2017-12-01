@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Conversation</title>
+    </h:head>
+    <h:body>
+        <center><h1><div style="font-size: 80px;">Conversation</div><div style="font-size: 100px;">&#x1F4EE;</div></h1></center>
+       <h:form style="margin: auto;width: 80%;border: 3px solid black;padding: 30px;">
+           <div style="float: left; padding: 30px;">
+               <h:commandButton style="background-color: #4CAF50; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none;
+                display: inline-block; font-size: 16px; padding: 10px;" id="inbox" value="Inbox" action="account.xhtml" />
+               &nbsp;
+               <h:commandButton style="background-color: #008CBA; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none;
+                display: inline-block; font-size: 16px; padding: 10px;" id="sent" value="View Sent"
+                                action="sent.xhtml" />
+                &nbsp;
+                <h:commandButton style="background-color: #008CBA; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none;
+                    display: inline-block; font-size: 16px; padding: 10px;" id="trash" value="View Trash"
+                                    action="trash.xhtml" />
+           </div>
+           <div style="float: right;padding: 30px;">
+               <h:commandButton style="background-color: #f44336; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none;
+                display: inline-block; font-size: 16px; padding: 10px;" id="logout" value="Log Out"
+                action="#{webMail.signOut()}" />
+           </div>
+           <div style="display: inline-block;margin: 30px;">
+               <br/><br/>
+               <div style="font-size: 25px; font-weight: bold; text-align: center;">Conversation between #{webMail.account.name} and #{webMail.getNameForEmailID(webMail.email.from)}</div>
+               <br/><br/>
+               <div style="font-size: 20px; font-weight: bold; text-align: center;">Subject: #{webMail.email.subject}</div>
+               <br/><br/>
+               <h:dataTable style="padding: 10px;" id="conversation" 
+                         rows ="#{webMail.conversationBox.size()}" 
+                         value="#{webMail.conversationBox}" var="emailObj">  
+                         
+                <h:column>
+                <div style="width: 90%; height:100px; border: 3px solid black;padding: 50px; text-align: center;">
+                    <div style="font-size: 72px;float: left;">&#x1F4E7;</div>
+                    <h:commandLink style="font-size: 25px; padding: 25px; float: left;" value="#{emailObj.message}"
+                                   action="#{webMail.getEmailByID(emailObj.ID)}"/>
+                </div>
+                </h:column>
+            </h:dataTable>
+           </div>
+        </h:form>
+    </h:body>
+</html>
+
