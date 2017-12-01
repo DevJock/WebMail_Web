@@ -262,6 +262,7 @@ public class WebMail implements Serializable
         email = readSelectedEmail();
         email.Subject = "FW: "+ email.Subject;
         email.To = "";
+        email.Message = "\n\n\n\n\n<-------------------------------Begin Forwarded Message------------------------------->\n"+email.Message;
         return "compose.xhtml";
     }
 
