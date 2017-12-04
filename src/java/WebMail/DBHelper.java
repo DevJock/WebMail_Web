@@ -25,7 +25,7 @@ public class DBHelper
     private String _databaseURL;
     private String _userName;
     private String _password;
-    private boolean developmentBuild = false;
+    private boolean developmentBuild = true;
     
     private Connection connection = null;
     private ResultSet result = null;

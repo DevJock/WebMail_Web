@@ -64,6 +64,11 @@ public class WebMail implements Serializable
            }
            db = new DBHelper("mis-sql.uhcl.edu/bangerac8361","bangerac8361","1603798");   
         }
+        if(!db.isOpen())
+        {
+            FacesContext.getCurrentInstance().addMessage("WebMail", new javax.faces.application.FacesMessage("Server Error"));
+            return;
+        }
         account = new Account();
         email = new Email();
         inbox = new ArrayList<Email>();
@@ -76,20 +81,33 @@ public class WebMail implements Serializable
     
     public String Login() 
     {
-        account = db.GetUserAccount(account.UserName, account.Password);
-        if(account == null )
+        if(!db.isOpen())
         {
-            FacesContext.getCurrentInstance().addMessage("WebMail", new javax.faces.application.FacesMessage("Incorrect Credentials"));
-            return null;
+            FacesContext.getCurrentInstance().addMessage("WebMail", new javax.faces.application.FacesMessage("Server Error"));
+            return "index.xhtml";
         }
-        refresh();
-        return "account.xhtml"; 
+        else
+        {
+            account = db.GetUserAccount(account.UserName, account.Password);
+            if(account == null )
+            {
+                FacesContext.getCurrentInstance().addMessage("WebMail", new javax.faces.application.FacesMessage("Incorrect Credentials"));
+                return null;
+            }
+            refresh();
+            return "account.xhtml"; 
+        }
     }
    
     
      
      public String register()
     {
+        if(!db.isOpen())
+        {
+            FacesContext.getCurrentInstance().addMessage("WebMail", new javax.faces.application.FacesMessage("Server Error"));
+            return "register.xhtml";
+        }
         if(!account.Password.equals(account.Password))
         {
             FacesContext.getCurrentInstance().addMessage("WebMail", new javax.faces.application.FacesMessage("Password Mismatch"));
@@ -196,7 +214,6 @@ public class WebMail implements Serializable
     
     public Email readConversationSelectedEmail()
     {
-        email = new Email();
         for(Email e: conversationbox)
         {
             if(e.ID == selectedEmailID)
@@ -206,7 +223,7 @@ public class WebMail implements Serializable
                 return e;
             }
         }
-        return null;
+        return conversationbox.get(0);
     }
 
 
@@ -234,10 +251,6 @@ public class WebMail implements Serializable
     
     public String send()
     {
-        if(email.To == null)
-        {
-            return "error";
-        }
         email.From = account.UserName;
         email.To = Account.UserNameFromEmail(email.To);
         db.SendEmail(email);
@@ -251,6 +264,10 @@ public class WebMail implements Serializable
     {
         selectedEmailID = emailID;
         email = readSelectedEmail();
+        if(email == null)
+        {
+           email = readConversationSelectedEmail();
+        }
         email.Subject = "RE: "+ email.Subject;
         String temp = email.From;
         email.From = email.To;

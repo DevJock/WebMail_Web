@@ -10,11 +10,11 @@
             <div style="float: left; padding: 30px;">
                 <h:commandButton style="background-color: #4CAF50; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none;
                                  display: inline-block; font-size: 16px; padding: 10px;" id="reply"
-                                 value="Reply" action="#{webMail.reply(webMail.readSelectedEmail().ID)}" />
+                                 value="Reply" action="#{webMail.reply(webMail.readConversationSelectedEmail().ID)}" />
                 &nbsp;
                 <h:commandButton style="background-color: #4CAF50; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none;
                                  display: inline-block; font-size: 16px; padding: 10px;" id="forward"
-                                 value="Forward" action="#{webMail.forward(webMail.readSelectedEmail().ID)}" />
+                                 value="Forward" action="#{webMail.forward(webMail.readConversationSelectedEmail().ID)}" />
                 &nbsp;
                 <h:commandButton style="background-color: #4CAF50; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none;
                                  display: inline-block; font-size: 16px; padding: 10px;" id="compose"
@@ -26,7 +26,7 @@
                 &nbsp;
                 <h:commandButton style="background-color: #008CBA; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none;
                                  display: inline-block; font-size: 16px; padding: 10px;" id="trash" value="Send to Trash"
-                                 action="#{webMail.trash(webMail.readSelectedEmail().ID)}" />
+                                 action="#{webMail.trash(webMail.readConversationSelectedEmail().ID)}" />
             </div>
             <div style="float: right;padding: 30px;">
                 <h:commandButton style="background-color: #f44336; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none;
