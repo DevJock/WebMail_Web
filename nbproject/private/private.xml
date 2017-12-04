@@ -3,14 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/MEGA/MIS/JAVA/WebMail/src/java/WebMail/Email.java</file>
-            <file>file:/D:/MEGA/MIS/JAVA/WebMail/src/java/WebMail/TimeKeeper.java</file>
-            <file>file:/D:/MEGA/MIS/JAVA/WebMail/web/compose.xhtml</file>
-            <file>file:/D:/MEGA/MIS/JAVA/WebMail/web/sent.xhtml</file>
-            <file>file:/D:/MEGA/MIS/JAVA/WebMail/src/java/WebMail/DBHelper.java</file>
-            <file>file:/D:/MEGA/MIS/JAVA/WebMail/src/java/WebMail/Account.java</file>
-            <file>file:/D:/MEGA/MIS/JAVA/WebMail/web/trash.xhtml</file>
-            <file>file:/D:/MEGA/MIS/JAVA/WebMail/src/java/WebMail/WebMail.java</file>
+            <file>file:/D:/MEGA/MIS/JAVA/WebMail/WebMail_Web/src/java/WebMail/DBHelper.java</file>
+            <file>file:/D:/MEGA/MIS/JAVA/WebMail/WebMail_Web/src/java/WebMail/WebMail.java</file>
+            <file>file:/D:/MEGA/MIS/JAVA/WebMail/WebMail_Web/web/viewemail.xhtml</file>
         </group>
     </open-files>
 </project-private>

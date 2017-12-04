@@ -35,14 +35,14 @@
             </div>
             <center>
                 <div style="margin: 150px;">
-                    <h2 style="font-size: 52px;">#{webMail.readSelectedEmail().subject}</h2>
+                    <h2 style="font-size: 52px;">#{webMail.readConversationSelectedEmail().subject}</h2>
 
-                    <h3 style="font-size: 32px;">From: #{webMail.readSelectedEmail().from}</h3>
-                    <h3 style="font-size: 32px;">To: #{webMail.readSelectedEmail().to}</h3>
-                    <h3 style="font-size: 32px;">Time Stamp: #{webMail.readSelectedEmail().timeStamp}</h3>
+                    <h3 style="font-size: 32px;">From: #{webMail.readConversationSelectedEmail().from}</h3>
+                    <h3 style="font-size: 32px;">To: #{webMail.readConversationSelectedEmail().to}</h3>
+                    <h3 style="font-size: 32px;">Time Stamp: #{webMail.readConversationSelectedEmail().timeStamp}</h3>
                     ----------------------------------------------------------------
                     <p style="font-size: 22px;">
-                        #{webMail.readSelectedEmail().message}
+                        #{webMail.readConversationSelectedEmail().message}
                     </p>
                 </div>
             </center>

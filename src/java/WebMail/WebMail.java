@@ -184,6 +184,30 @@ public class WebMail implements Serializable
         }
         return null;
     }
+    
+    
+    
+    public String getConversationEmailByID(int i)
+    {
+         selectedEmailID = i;
+         return "viewconversationemail.xhtml";         
+    
+    }
+    
+    public Email readConversationSelectedEmail()
+    {
+        email = new Email();
+        for(Email e: conversationbox)
+        {
+            if(e.ID == selectedEmailID)
+            {
+                db.MarkEmailAsRead(e);
+                refresh();
+                return e;
+            }
+        }
+        return null;
+    }
 
 
     public String conversationView(int emailID)
